@@ -6,6 +6,10 @@ namespace OrderManagement.View;
 
 public class InputManager
 {
+    /// <summary>
+    /// Get product from user.
+    /// </summary>
+    /// <returns>Returns the validated product.</returns>
     public static string GetProductName()
     {
         while (true)
@@ -30,6 +34,11 @@ public class InputManager
             }
         }
     }
+
+    /// <summary>
+    /// Get price of product.
+    /// </summary>
+    /// <returns>Returns the validated price.</returns>
     public static decimal GetProductPrice()
     {
         while (true)
@@ -52,6 +61,10 @@ public class InputManager
         }
     }
 
+    /// <summary>
+    /// Get the number of product needed.
+    /// </summary>
+    /// <returns>Returns the quantity of product.</returns>
     public static int GetProductQuantity()
     {
         while (true)
@@ -74,12 +87,17 @@ public class InputManager
         }
     }
 
-    private static bool isProductExists(string username)
+    /// <summary>
+    /// Check whether the product already exist or not
+    /// </summary>
+    /// <param name="userInput">The entered product name by the user.</param>
+    /// <returns></returns>
+    private static bool isProductExists(string userInput)
     {
         List<Product> existingProduct = ProductDatabase.DisplayProduct();
         foreach (Product i in existingProduct)
         {
-            if (i.Name.Trim().ToLower() == username.Trim().ToLower())
+            if (i.Name.Trim().ToLower() == userInput.Trim().ToLower())
             {
                 return true;
             }

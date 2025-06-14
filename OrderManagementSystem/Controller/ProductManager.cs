@@ -7,17 +7,25 @@ namespace OrderManagement.Controller;
 
 public class ProductManager
 {
+    /// <summary>
+    /// Displays the main menu.
+    /// </summary>
     public void HandleMainMenu()
     {
         List<MenuHandler> mainmenuHandler = new List<MenuHandler>()
         {
             new MenuHandler( "Add new Product", AddNewProduct ),
-            new MenuHandler( "View Products", ViewProduct),
+            new MenuHandler( "View Products", OutputManager.ViewProduct),
             new MenuHandler( "Exit", ExitApplication )
         };
 
         HandleMainMenuActions("Main Menu", mainmenuHandler);
     }
+    /// <summary>
+    /// Displays menu options.
+    /// </summary>
+    /// <param name="menutitle">User's choice of action.</param>
+    /// <param name="handler">Actions corresponding to the user choice.</param>
     public void HandleMainMenuActions(string menutitle, List<MenuHandler> handler)
     {
         while (true)
@@ -51,25 +59,12 @@ public class ProductManager
         }
     }
 
-    private void ViewProduct()
-    {
-        List<Product> products = ProductDatabase.DisplayProduct();
-        if (products.Count == 0)
-        {
-            Console.WriteLine("No products exist in inventory.");
-            return;
-        }
-        Console.WriteLine("\n====== Products ======\n");
-        Console.WriteLine(" {0,-5} | {1,-20} | {2,-10} | {3,-10} ", "Id", "Product Name", "Price", "Quantity");
-        Console.WriteLine("--------------------------------------------------");
-        for (int i = 0; i < products.Count; i++)
-        {
-            Console.WriteLine("{0,-5} | {1,-20} | {2,-10} | {3,-10}", i + 1, products[i].Name, products[i].Price, products[i].Quantity);
-        }
-    }
-
+    /// <summary>
+    /// Adds a new product.
+    /// </summary>
     private void AddNewProduct()
     {
+        Console.WriteLine("\n====== Add New Product ======\n");
         string name = InputManager.GetProductName();
         decimal price = InputManager.GetProductPrice();
         int quantity = InputManager.GetProductQuantity();
@@ -77,11 +72,14 @@ public class ProductManager
         Console.WriteLine("\n[Success] New product is added successfully!");
     }
 
+    /// <summary>
+    /// Exits the application when the user wants to close it.
+    /// </summary>
     private void ExitApplication()
     {
         while (true)
         {
-            Console.WriteLine("\nAre you sure you want to exit? (Y/N):");
+            Console.Write("\nAre you sure you want to exit? (Y/N): ");
             string userInput = Console.ReadLine();
             if (userInput == "Y" || userInput == "y")
             {
