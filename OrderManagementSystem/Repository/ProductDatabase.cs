@@ -1,4 +1,4 @@
-namespace OrderManagement.Repositary;
+namespace OrderManagement.Repository;
 using OrderManagement.Model;
 
 public class ProductDatabase

@@ -7,5 +7,6 @@ public class Program
     public static void Main()
     {
         ProductManager productManager = new ProductManager();
+        productManager.HandleMainMenu();
     }
 }
