@@ -6,10 +6,13 @@ public class Product
     /// Getter and setter for Products's Name
     /// </summary>
     public string Name { get; set; }
+
     /// <summary>
     /// Getter and setter for Product's Price.
     /// </summary>
+    /// 
     public decimal Price { get; set; }
+    
     /// <summary>
     /// Getter and setter for Product's Quantity.
     /// </summary>

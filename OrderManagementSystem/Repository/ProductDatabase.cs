@@ -6,7 +6,7 @@ public class ProductDatabase
     /// <summary>
     /// Stores all products.
     /// </summary>
-    static List<Product> _productList = new List<Product>();
+    public static List<Product> _productList = new List<Product>();
 
     /// <summary>
     /// Add a new product to the list.
